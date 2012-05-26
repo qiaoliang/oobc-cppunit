@@ -1,8 +1,5 @@
-#include "copycat.h"
+#include "Money.h"
 int main(int argc, char** argv){
-    Copycat copycat;
-    //copycat.SetTrFlag(true);
-    //copycat.SetTpFlag(true);
-    copycat.Copy();
+    Money money(2,"f");
     return 0;
 }
