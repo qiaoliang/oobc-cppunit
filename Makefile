@@ -17,10 +17,10 @@ PRODUCT_INCLUDE_DIR = ./include
 PRODUCT_SRC_DIR = ./src
 
 # Flags passed to the preprocessor.
-CPPFLAGS += -I$(CPPTEST_INCLUDE_DIR) -I$(UT_INCLUDE_DIR) -I$(PRODUCT_INCLUDE_DIR)
+CPPFLAGS += -I$(CPPTEST_INCLUDE_DIR) -I$(UT_INCLUDE_DIR) -I$(PRODUCT_INCLUDE_DIR) -L$(CPPTEST_LIB_DIR) 
 
 # Flags passed to the C++ compiler.
-CXXFLAGS += -O2 -w -Wextra -lrt 
+CXXFLAGS += -O2 -w -Wextra -static -ldl -lrt 
 
 # All tests produced by this Makefile.  Remember to add new tests you
 
@@ -50,7 +50,7 @@ $(PRODUCT_OBJ_DIR)/%.o : $(PRODUCT_SRC_DIR)/%.$(EXTENSION)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -I$(PRODUCT_INCLUDE_DIR) -o $@
 	
 ut : $(UT_OBJS) $(PRODUCT_FOR_UT) 
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -pthread $^ -o $(OBJ_DIR)/$@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -pthread $^ -o $(OBJ_DIR)/$@ -lcppunit
 
 product : $(PRODUCT_OBJS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -pthread $^ -o $(PRODUCT_OBJ_DIR)/$@
