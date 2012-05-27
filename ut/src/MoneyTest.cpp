@@ -25,15 +25,15 @@ void
 MoneyTest::testConstructor()
 {
   // Set up
-  const std::string currencyFF( "FF" );
+  const std::string currencyRMB( "RMB" );
   const double longNumber = 1234.5678;
 
   // Process
-  Money money( longNumber, currencyFF );
+  Money money( longNumber, currencyRMB );
 
   // Check
   CPPUNIT_ASSERT_EQUAL( longNumber, money.getAmount() );
-  CPPUNIT_ASSERT_EQUAL( currencyFF, money.getCurrency() );
+  CPPUNIT_ASSERT_EQUAL( currencyRMB, money.getCurrency() );
 }
 
 
@@ -41,16 +41,16 @@ void
 MoneyTest::testEqual()
 {
   // Set up
-  const Money money123FF( 123, "FF" );
+  const Money money123RMB( 123, "RMB" );
   const Money money123USD( 123, "USD" );
-  const Money money12FF( 12, "FF" );
+  const Money money12RMB( 12, "RMB" );
   const Money money12USD( 12, "USD" );
 
   // Process & Check
-  CPPUNIT_ASSERT( money123FF == money123FF );    // ==
-  CPPUNIT_ASSERT( money12FF != money123FF );     // != amount
-  CPPUNIT_ASSERT( money123USD != money123FF );   // != currency
-  CPPUNIT_ASSERT( money12USD != money123FF );    // != currency and != amount
+  CPPUNIT_ASSERT( money123RMB == money123RMB );    // ==
+  CPPUNIT_ASSERT( money12RMB != money123RMB );     // != amount
+  CPPUNIT_ASSERT( money123USD != money123RMB );   // != currency
+  CPPUNIT_ASSERT( money12USD != money123RMB );    // != currency and != amount
 }
 
 
@@ -58,16 +58,16 @@ void
 MoneyTest::testAdd()
 {
   // Set up
-  const Money money12FF( 12, "FF" );
-  const Money expectedMoney( 135, "FF" );
+  const Money money12RMB( 12, "RMB" );
+  const Money expectedMoney( 135, "RMB" );
 
   // Process
-  Money money( 123, "FF" );
-  money += money12FF;
+  Money money( 123, "RMB" );
+  money += money12RMB;
 
   // Check
   CPPUNIT_ASSERT_EQUAL( expectedMoney, money );           // add works
-  CPPUNIT_ASSERT( &money == &(money += money12FF) );  // add returns ref. on 'this'.
+  CPPUNIT_ASSERT( &money == &(money += money12RMB) );  // add returns ref. on 'this'.
 }
 
 
@@ -75,9 +75,9 @@ void
 MoneyTest::testAddThrow()
 {
   // Set up
-  const Money money123FF( 123, "FF" );
+  const Money money123RMB( 123, "RMB" );
 
   // Process
   Money money( 123, "USD" );
-  money += money123FF;        // should throw an exception
+  money += money123RMB;        // should throw an exception
 }
