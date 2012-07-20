@@ -50,3 +50,12 @@ RoverTest::test_should_be_13_3_E_after_10_M_when_3_3_E( ){
     CPPUNIT_ASSERT_EQUAL( 'E', rover.getFacing());
     
 }
+void
+RoverTest::test_should_be_4_3_E_after_1_M_when_3_3_E(  ){
+    Rover rover = Rover( 3,3,'E');
+    rover.execute();
+    CPPUNIT_ASSERT_EQUAL( 4, rover.getX());
+    CPPUNIT_ASSERT_EQUAL( 3, rover.getY());
+    CPPUNIT_ASSERT_EQUAL( 'E', rover.getFacing());
+
+}
