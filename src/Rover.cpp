@@ -13,5 +13,5 @@ void Rover::recieve( std::string commands ){
     
 }
 void Rover::execute( char command ){
-    
+    this->m_y+=1;
 }
