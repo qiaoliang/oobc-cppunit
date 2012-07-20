@@ -24,13 +24,17 @@ CXXFLAGS += -O2 -w -Wextra -static -ldl -lrt
 
 # All tests produced by this Makefile.  Remember to add new tests you
 
-all : ut product
+all : clean prepare cppunit product
 
 clean :
-	rm -f $(OBJ_DIR)/* $(PRODUCT_OBJ_DIR)/*
+	-rm -Rf ./output/
+	-rm -f ${UT_SRC_DIR}/*.o
+	-rm -f ${PRODUCT_SRC_DIR}/*.o
 
-# Builds gtest.a and gtest_main.a.
-
+prepare:
+	-mkdir output
+	-mkdir output/ut
+	-mkdir output/bin
 UT_SRC = $(wildcard $(UT_SRC_DIR)/*.$(EXTENSION))
 PRODUCT_SRC = $(wildcard $(PRODUCT_SRC_DIR)/*.$(EXTENSION))
 UT_HEADER = $(wildcard $(UT_INCLUDE_DIR)/*.h)
@@ -49,7 +53,7 @@ $(PRODUCT_OBJ_DIR)/%.o : $(PRODUCT_SRC_DIR)/%.$(EXTENSION)
 	@echo ' 2' 
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -I$(PRODUCT_INCLUDE_DIR) -o $@
 	
-ut : $(UT_OBJS) $(PRODUCT_FOR_UT) 
+cppunit : $(UT_OBJS) $(PRODUCT_FOR_UT) 
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -pthread $^ -o $(OBJ_DIR)/$@ -lcppunit
 
 product : $(PRODUCT_OBJS)
