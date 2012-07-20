@@ -15,5 +15,8 @@ void Rover::recieve( std::string commands ){
     }
 }
 void Rover::execute(){
-    this->m_y+=1;
+    if(this->m_facing =='N')
+        this->m_y+=1;
+    else
+        this->m_x+=1;
 }
