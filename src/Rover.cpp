@@ -10,8 +10,10 @@ char Rover::getFacing(  ) const{
     return this->m_facing;
 }
 void Rover::recieve( std::string commands ){
-    
+    for( int i=0;i<commands.length( );i++ ){
+        this->execute();
+    }
 }
-void Rover::execute( char command ){
+void Rover::execute(){
     this->m_y+=1;
 }
