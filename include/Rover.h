@@ -17,6 +17,7 @@ public:
     }
 
     void recieve(std::string commands);
+    void execute( char command );
     int getX() const;
     int getY() const;
     char getFacing() const;

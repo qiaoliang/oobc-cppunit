@@ -32,3 +32,11 @@ RoverTest::test_should_be_1_9_N_after_7_M_when_1_2_N()
   CPPUNIT_ASSERT_EQUAL( 'N', rover.getFacing());
 }
 
+void
+RoverTest::test_should_be_1_3_N_after_1_M_when_1_2_N(  ){
+    Rover rover = Rover(1,2,'N' );
+    rover.execute('M');
+    CPPUNIT_ASSERT_EQUAL( 1, rover.getX());
+    CPPUNIT_ASSERT_EQUAL( 3, rover.getY());
+    CPPUNIT_ASSERT_EQUAL( 'N', rover.getFacing());
+}

@@ -12,3 +12,6 @@ char Rover::getFacing(  ) const{
 void Rover::recieve( std::string commands ){
     
 }
+void Rover::execute( char command ){
+    
+}
