@@ -58,5 +58,14 @@ RoverTest::test_should_stay_at_same_state_if_no_move_at_all( ){
     CPPUNIT_ASSERT_EQUAL( expected, rover.getState());
     
 }
+void
+RoverTest::test_should_be_0_minus_2_S_after_2_M_when_0_0_S( ){
+    RoverState expected = RoverState( 0,-2,'S' );
+    Rover rover = Rover(0,0,'S' );
+    rover.recieve("MM" );
+    CPPUNIT_ASSERT_EQUAL( expected, rover.getState());
+    
+}
+
 
 
