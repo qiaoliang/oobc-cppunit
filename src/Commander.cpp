@@ -19,6 +19,5 @@ string Commander::send(string location_string, string commands ){
         i++;
     }
     Rover rover = Rover( atoi(locations[0].c_str()),atoi( locations[1].c_str( ) ),temp[i-1] );
-    rover.recieve(commands);
-    return rover.getState( ).toString();
+    return rover.recieve(commands);
 }

@@ -15,7 +15,7 @@ public:
     {
     }
 
-    void recieve(std::string commands);
+    std::string recieve(std::string commands);
     RoverState getState() const;
 private:
     RoverState m_state;
