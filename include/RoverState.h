@@ -33,8 +33,10 @@ RoverState( int x, int y, char facing )
   RoverState execute(){
     if(this->m_facing =='N')
         this->m_y+=1;
-    else
+    if( this->m_facing == 'E')
         this->m_x+=1;
+    if( this->m_facing =='W' )
+        this->m_x-=1;
     return *this;
   }
 
