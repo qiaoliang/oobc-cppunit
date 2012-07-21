@@ -33,15 +33,33 @@ RoverState( int x, int y, char facing )
   {
     return m_facing;
   }
-  RoverState execute(){
-    if(this->m_facing =='N')
-        this->m_y+=1;
-    if( this->m_facing == 'E')
-        this->m_x+=1;
-    if( this->m_facing =='W' )
-        this->m_x-=1;
-    if( this->m_facing =='S' )
-        this->m_y-=1;
+  RoverState execute(char command){
+    switch( this->m_facing ){
+    case  'N':
+         if(command == 'L')
+              this->m_facing = 'W';
+         else 
+              this->m_y+=1;
+         break;
+    case 'E':
+        if( command == 'L' )
+             this->m_facing = 'N';
+        else
+             this->m_x+=1;
+        break;
+    case 'W':
+        if( command == 'L' )
+             this->m_facing = 'S';
+        else
+             this->m_x-=1;
+        break;
+    case 'S':
+        if( command == 'L' )
+             this->m_facing = 'E';
+        else
+             this->m_y-=1;
+        break;
+    }
     return *this;
   }
 

@@ -50,19 +50,25 @@ void
 RoverStateTest::test_should_be_1_3_N_after_1_M_when_1_2_N(  ){
     RoverState expectedPoint = RoverState( 1,3,'N' );
     RoverState startPoint = RoverState(1,2,'N' );
-    CPPUNIT_ASSERT_EQUAL( expectedPoint, startPoint.execute());
+    CPPUNIT_ASSERT_EQUAL( expectedPoint, startPoint.execute('M'));
 }
 void
 RoverStateTest::test_should_be_4_3_E_after_1_M_when_3_3_E(  ){
     RoverState expectedPoint = RoverState( 4,3,'E');
     RoverState startPoint = RoverState( 3,3,'E' );
-    CPPUNIT_ASSERT_EQUAL( expectedPoint, startPoint.execute());
+    CPPUNIT_ASSERT_EQUAL( expectedPoint, startPoint.execute('M'));
 
 }
 //Part II
 void RoverStateTest::test_given_facing_N_when_turn_L_then_facing_W(  ){
     RoverState expected=RoverState(0,0,'W' );
     RoverState start = RoverState( 0,0,'N' );
+
+    CPPUNIT_ASSERT_EQUAL( expected, start.execute('L'));
+}
+void RoverStateTest::test_given_facing_W_when_turn_L_then_facing_S(  ){
+    RoverState expected=RoverState(0,0,'S' );
+    RoverState start = RoverState( 0,0,'W' );
 
     CPPUNIT_ASSERT_EQUAL( expected, start.execute('L'));
 }

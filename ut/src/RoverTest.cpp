@@ -79,7 +79,7 @@ void
 RoverTest::test_given_facing_N_when_turn_L_then_facing_W_in_same_point( ){
     RoverState expected = RoverState(1,1,'W');
     Rover rover = Rover( 1,1,'N' );
-    rover.recieve("M");
+    rover.recieve("L");
     CPPUNIT_ASSERT_EQUAL( expected, rover.getState());
 }
 

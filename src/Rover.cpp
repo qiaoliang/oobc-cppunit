@@ -5,8 +5,9 @@ RoverState Rover::getState(  ) const{
 }
 
 std::string Rover::recieve( std::string commands ){
-    for( int i=0;i<commands.length( );i++ ){
-        this->m_state = this->m_state.execute();
+    const char* signals = commands.c_str(  );
+    for( int i=0;i<commands.length(  );i++ ){
+        this->m_state = this->m_state.execute(signals[ i ]);
     }
     return this->m_state.toString();
 }
