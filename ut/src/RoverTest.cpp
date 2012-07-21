@@ -50,3 +50,13 @@ RoverTest::test_should_be_0_1_W_after_1_M_when_1_1_W( ){
     CPPUNIT_ASSERT_EQUAL( expected, rover.getState());
     
 }
+void
+RoverTest::test_should_stay_at_same_state_if_no_move_at_all( ){
+    RoverState expected = RoverState( 0,0,'S' );
+    Rover rover = Rover(0,0,'S' );
+    rover.recieve("" );
+    CPPUNIT_ASSERT_EQUAL( expected, rover.getState());
+    
+}
+
+
