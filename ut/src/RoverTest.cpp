@@ -42,3 +42,11 @@ RoverTest::test_should_be_13_3_E_after_10_M_when_3_3_E( ){
     CPPUNIT_ASSERT_EQUAL( expected, rover.getState());
     
 }
+void
+RoverTest::test_should_be_0_1_W_after_1_M_when_1_1_W( ){
+    RoverState expected = RoverState( 0,1,'W' );
+    Rover rover = Rover(1,1,'W' );
+    rover.recieve("M" );
+    CPPUNIT_ASSERT_EQUAL( expected, rover.getState());
+    
+}
