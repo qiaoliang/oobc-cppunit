@@ -3,6 +3,7 @@
 #include "StdAfx.h"
 #include <cppunit/config/SourcePrefix.h>
 #include "Rover.h"
+#include "RoverState.h"
 #include "RoverTest.h"
 
 // Registers the fixture into the 'registry'
@@ -25,11 +26,14 @@ void
 RoverTest::test_should_be_1_9_N_after_7_M_when_1_2_N()
 {
   Rover rover = Rover(1,2,'N');
+  RoverState expected = RoverState( 1,2,'N' );
+
   rover.recieve("MMMMMMM");
-  
+
   CPPUNIT_ASSERT_EQUAL( 1, rover.getX());
   CPPUNIT_ASSERT_EQUAL( 9, rover.getY());
   CPPUNIT_ASSERT_EQUAL( 'N', rover.getFacing());
+  CPPUNIT_ASSERT_EQUAL( expected, rover.getState( ));
 }
 
 void

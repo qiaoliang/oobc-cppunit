@@ -9,6 +9,11 @@ int Rover::getY( ) const {
 char Rover::getFacing(  ) const{
     return this->m_facing;
 }
+
+RoverState Rover::getState(  ) const{
+    return this->m_state;
+}
+
 void Rover::recieve( std::string commands ){
     for( int i=0;i<commands.length( );i++ ){
         this->execute();
