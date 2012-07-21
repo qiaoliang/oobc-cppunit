@@ -44,5 +44,19 @@ RoverStateTest::test_not_equal()
   RoverState state_y_2= state_N;
   RoverState state_y_3= RoverState( 1,3,'N');
   CPPUNIT_ASSERT( state_y_2!=state_y_3);
+ 
+}
+void
+RoverStateTest::test_should_be_1_3_N_after_1_M_when_1_2_N(  ){
+    RoverState expectedPoint = RoverState( 1,3,'N' );
+    RoverState startPoint = RoverState(1,2,'N' );
+    CPPUNIT_ASSERT_EQUAL( expectedPoint, startPoint.execute());
+}
+void
+RoverStateTest::test_should_be_4_3_E_after_1_M_when_3_3_E(  ){
+    RoverState expectedPoint = RoverState( 4,3,'E');
+    RoverState startPoint = RoverState( 3,3,'E' );
+    CPPUNIT_ASSERT_EQUAL( expectedPoint, startPoint.execute());
 
 }
+

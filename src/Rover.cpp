@@ -16,12 +16,6 @@ RoverState Rover::getState(  ) const{
 
 void Rover::recieve( std::string commands ){
     for( int i=0;i<commands.length( );i++ ){
-        this->execute();
+        this->m_state = this->m_state.execute();
     }
-}
-void Rover::execute(){
-    if(this->m_facing =='N')
-        this->m_y+=1;
-    else
-        this->m_x+=1;
 }

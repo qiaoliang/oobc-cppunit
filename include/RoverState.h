@@ -30,6 +30,13 @@ RoverState( int x, int y, char facing )
   {
     return m_facing;
   }
+  RoverState execute(){
+    if(this->m_facing =='N')
+        this->m_y+=1;
+    else
+        this->m_x+=1;
+    return *this;
+  }
 
   bool operator ==( const RoverState &other ) const
   {
