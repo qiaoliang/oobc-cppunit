@@ -37,6 +37,8 @@ RoverState( int x, int y, char facing )
         this->m_x+=1;
     if( this->m_facing =='W' )
         this->m_x-=1;
+    if( this->m_facing =='S' )
+        this->m_y-=1;
     return *this;
   }
 
