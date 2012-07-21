@@ -10,23 +10,14 @@ class Rover
 {
 public:
     Rover( int x, int y, char facing )
-        : m_x( x )
-        , m_y( y )
-        , m_facing( facing )
-        , m_state( RoverState(x,y,facing))
+         : m_state( RoverState(x,y,facing))
 
     {
     }
 
     void recieve(std::string commands);
-    int getX() const;
-    int getY() const;
-    char getFacing() const;
     RoverState getState() const;
 private:
-    int m_x;
-    int m_y;
-    char m_facing;
     RoverState m_state;
 };
 
