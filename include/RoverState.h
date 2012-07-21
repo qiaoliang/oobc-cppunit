@@ -2,9 +2,12 @@
 #ifndef ROVERSTATE_H
 #define ROVERSTATE_H
 
+#include <stdlib.h>
+#include <sstream>
 #include <string>
 #include <stdexcept>
 #include <cppunit/portability/Stream.h>    // or <iostream> if portability is not an issue
+using namespace std;
 
 class RoverState
 {
@@ -54,6 +57,12 @@ RoverState( int x, int y, char facing )
     return !(*this == other);
   }
 
+  string toString( ){
+    std::stringstream   pointx,pointy;
+    pointx<<this->m_x;
+    pointy<<this->m_y;
+    return pointx.str()+" "+pointy.str( )+" "+string(1,m_facing);
+  }
   
 private:
   int m_x;
