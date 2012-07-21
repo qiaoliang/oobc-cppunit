@@ -13,6 +13,8 @@ public:
     }
 
     std::string send(std::string location, std::string commands);
+private:
+    void parseOriginLocationString(std::string location,std::string* result);
 };
 
 #endif
