@@ -8,6 +8,7 @@ class RoverStateTest : public CPPUNIT_NS::TestFixture
 {
   CPPUNIT_TEST_SUITE( RoverStateTest );
   CPPUNIT_TEST( test_equal);
+  CPPUNIT_TEST( test_not_equal);
   CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -15,6 +16,7 @@ public:
   void tearDown();
 
   void test_equal();
+  void test_not_equal();
 };
 
 #endif  // ROVERTEST_H
