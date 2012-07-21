@@ -66,6 +66,14 @@ RoverTest::test_should_be_0_minus_2_S_after_2_M_when_0_0_S( ){
     CPPUNIT_ASSERT_EQUAL( expected, rover.getState());
     
 }
+void
+RoverTest::test_should_be_1_3_N_after_LMLMLMLMM_when_1_2_N( ){
+    RoverState expected = RoverState( 1,3,'N' );
+    Rover rover = Rover(1,2,'N' );
+    rover.recieve("LMLMLMLMM" );
+    CPPUNIT_ASSERT_EQUAL( expected, rover.getState());
+    
+}
 
 
 
