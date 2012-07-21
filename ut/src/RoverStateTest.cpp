@@ -59,4 +59,10 @@ RoverStateTest::test_should_be_4_3_E_after_1_M_when_3_3_E(  ){
     CPPUNIT_ASSERT_EQUAL( expectedPoint, startPoint.execute());
 
 }
+//Part II
+void RoverStateTest::test_given_facing_N_when_turn_L_then_facing_W(  ){
+    RoverState expected=RoverState(0,0,'W' );
+    RoverState start = RoverState( 0,0,'N' );
 
+    CPPUNIT_ASSERT_EQUAL( expected, start.execute('L'));
+}

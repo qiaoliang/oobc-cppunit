@@ -13,6 +13,8 @@ class RoverTest : public CPPUNIT_NS::TestFixture
   CPPUNIT_TEST( test_should_be_0_minus_2_S_after_2_M_when_0_0_S );
   CPPUNIT_TEST( test_should_stay_at_same_state_if_no_move_at_all );
   CPPUNIT_TEST( test_should_be_1_3_N_after_LMLMLMLMM_when_1_2_N);
+//Part II
+  CPPUNIT_TEST( test_given_facing_N_when_turn_L_then_facing_W_in_same_point );
   CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -25,6 +27,8 @@ public:
   void test_should_be_0_minus_2_S_after_2_M_when_0_0_S(  );
   void test_should_stay_at_same_state_if_no_move_at_all(  );
   void test_should_be_1_3_N_after_LMLMLMLMM_when_1_2_N(  );
+//Part II below
+  void test_given_facing_N_when_turn_L_then_facing_W_in_same_point();
 };
 
 #endif  // ROVERTEST_H

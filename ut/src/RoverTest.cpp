@@ -74,6 +74,13 @@ RoverTest::test_should_be_1_3_N_after_LMLMLMLMM_when_1_2_N( ){
     CPPUNIT_ASSERT_EQUAL( expected, rover.getState());
     
 }
-
+//part II
+void
+RoverTest::test_given_facing_N_when_turn_L_then_facing_W_in_same_point( ){
+    RoverState expected = RoverState(1,1,'W');
+    Rover rover = Rover( 1,1,'N' );
+    rover.recieve("M");
+    CPPUNIT_ASSERT_EQUAL( expected, rover.getState());
+}
 
 
