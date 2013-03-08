@@ -4,7 +4,7 @@ std::string Rover::toString() const {
     std::stringstream   pointx,pointy;
     pointx<<this->m_x;
     pointy<<this->m_y;
-    return pointx.str()+" "+pointy.str( )+" "+std::string(1,m_facing);
+    return pointx.str()+" "+pointy.str( )+" "+std::string(1,FACING[this->m_index]);
 }
 std::string Rover::recieve( std::string commands ){
     const char* signals = commands.c_str(  );
@@ -14,30 +14,31 @@ std::string Rover::recieve( std::string commands ){
     return toString();
 }
 void Rover::execute(char command){
-    switch( this->m_facing ){
-    case  'N':
-         if(command == 'L')
-              this->m_facing = 'W';
-         else 
-              this->m_y+=1;
-         break;
-    case 'E':
-        if( command == 'L' )
-             this->m_facing = 'N';
-        else
-             this->m_x+=1;
+    switch( command ){
+    case 'R':
+        this->m_index=this->m_index<3?this->m_index+1:0;
         break;
-    case 'W':
-        if( command == 'L' )
-             this->m_facing = 'S';
-        else
-             this->m_x-=1;
+    case 'L':
+        this->m_index=this->m_index>0?this->m_index-1:3;
         break;
-    case 'S':
-        if( command == 'L' )
-             this->m_facing = 'E';
-        else
-             this->m_y-=1;
+    case 'M':
+        moveforward();
+        break;
+    }
+}
+void Rover::moveforward(){
+    switch( this->m_index ){
+    case 0:
+        this->m_x+=1;
+        break;
+    case 1:
+        this->m_y-=1;
+        break;
+    case 2:
+        this->m_x-=1;
+        break;
+    case 3:
+        this->m_y+=1;
         break;
     }
 }

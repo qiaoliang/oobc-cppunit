@@ -20,54 +20,41 @@ RoverTest::tearDown()
 {
 }
 
-
-void 
-RoverTest::GIVEN_rover_at_1_2_N_WHEN_move_7_steps_THEN_it_should_be_at_1_9_N()
-{
-  std::string expected = "1 9 N";
-  Rover rover = Rover(1,2,'N');
-  CPPUNIT_ASSERT_EQUAL( expected, rover.recieve("MMMMMMM"));
+void RoverTest::Rover_should_turn_LEFT_by_90_degree_and_stay_at_same_point_when_excuting_command_L(){
+  Rover rover=Rover(1,9, 'N');
+  CPPUNIT_ASSERT_EQUAL( std::string("1 9 W"), rover.recieve("L"));
+  CPPUNIT_ASSERT_EQUAL( std::string("1 9 S"), rover.recieve("L"));
+  CPPUNIT_ASSERT_EQUAL( std::string("1 9 E"), rover.recieve("L"));
+  CPPUNIT_ASSERT_EQUAL( std::string("1 9 N"), rover.recieve("L"));
+}
+void RoverTest::Rover_should_turn_RIGHT_by_90_degree_and_stay_at_same_point_when_excuting_command_R(){
+  Rover rover=Rover(1,9, 'N');
+  CPPUNIT_ASSERT_EQUAL( std::string("1 9 E"), rover.recieve("R"));
+  CPPUNIT_ASSERT_EQUAL( std::string("1 9 S"), rover.recieve("R"));
+  CPPUNIT_ASSERT_EQUAL( std::string("1 9 W"), rover.recieve("R"));
+  CPPUNIT_ASSERT_EQUAL( std::string("1 9 N"), rover.recieve("R"));
+}
+void RoverTest::Rover_should_move_forward_one_step_with_same_facing_when_excuting_command_M(){
+  Rover rover_faced_N=Rover(1,9, 'N');
+  CPPUNIT_ASSERT_EQUAL( std::string("1 10 N"), rover_faced_N.recieve("M"));
+  Rover rover_faced_W=Rover(1,9, 'W');
+  CPPUNIT_ASSERT_EQUAL( std::string("0 9 W"), rover_faced_W.recieve("M"));
+  Rover rover_faced_S=Rover(1,9, 'S');
+  CPPUNIT_ASSERT_EQUAL( std::string("1 8 S"), rover_faced_S.recieve("M"));
+  Rover rover_faced_E=Rover(1,9, 'E');
+  CPPUNIT_ASSERT_EQUAL( std::string("2 9 E"), rover_faced_E.recieve("M"));
 }
 
-
 void
-RoverTest::GIVEN_rover_at_3_3_E_WHEN_move_10_steps_THEN_it_should_be_at_13_3_E( ){
-    std::string expected = "13 3 E";
-    Rover rover = Rover(3,3,'E' );
-    CPPUNIT_ASSERT_EQUAL( expected, rover.recieve("MMMMMMMMMM" ));
-    
-}
-void
-RoverTest::GIVEN_rover_at_1_1_W_WHEN_move_1_step_THEN_it_should_be_at_0_1_W( ){
-    std::string expected ="0 1 W";
-    Rover rover = Rover(1,1,'W' );
-    CPPUNIT_ASSERT_EQUAL( expected,rover.recieve("M" ));
-    
-}
-void
-RoverTest::GIVEN_rover_at_any_where_WHEN_empty_signal_received_THEN_it_should_stay( ){
+RoverTest::Rover_should_keep_same_state_when_receiving_empty_signal( ){
     std::string samelocation = "0 0 S";
     Rover rover_at_anywhere = Rover(0,0,'S' );
     CPPUNIT_ASSERT_EQUAL( samelocation,rover_at_anywhere.recieve(""));
     
 }
 void
-RoverTest::GIVEN_rover_at_0_0_S_WHEN_move_2_steps_THEN_it_should_be_at_0_minus_2_S( ){
-    std::string expected = "0 -2 S";
-    Rover rover = Rover(0,0,'S' );
-    CPPUNIT_ASSERT_EQUAL( expected, rover.recieve("MM"));
-    
-}
-void
-RoverTest::GIVEN_rover_at_1_2_N_WHEN_receiving_LMLMLMLMM_THEN_it_should_be_at_1_3_N( ){
+RoverTest::Rover_should_handle_multiple_signals_at_a_time( ){
     std::string expected = "1 3 N";
     Rover rover = Rover(1,2,'N' );
     CPPUNIT_ASSERT_EQUAL( expected, rover.recieve("LMLMLMLMM"));
-    
-}
-void
-RoverTest::GIVEN_rover_faces_W_WHEN_receiving_L_THEN_it_should_faces_N_and_stays_at_same_location(){
-    std::string expected = "1 1 W";
-    Rover rover = Rover( 1,1,'N' );
-    CPPUNIT_ASSERT_EQUAL( expected, rover.recieve("L"));
 }
